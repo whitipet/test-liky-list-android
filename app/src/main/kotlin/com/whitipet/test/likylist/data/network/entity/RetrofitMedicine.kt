@@ -6,7 +6,7 @@ data class RetrofitMedicine(
 	@SerializedName("id") val id: Int,
 	@SerializedName("trade_label") val tradeLabel: TradeLabel,
 	@SerializedName("composition") val composition: Composition,
-	@SerializedName("manufacturer") val manufacturer: Manufacturer,
+	@SerializedName("manufacturer") val manufacturer: Manufacturer?,
 	@SerializedName("packaging") val packaging: Packaging,
 ) {
 	data class TradeLabel(
