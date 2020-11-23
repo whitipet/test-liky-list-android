@@ -1,10 +1,11 @@
-package com.whitipet.test.likylist
+package com.whitipet.test.likylist.utils
 
 import android.annotation.SuppressLint
 import android.os.Build
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import com.whitipet.test.likylist.R
 
 class StatusBarUtils {
 

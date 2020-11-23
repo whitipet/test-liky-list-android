@@ -1,4 +1,4 @@
-package com.whitipet.test.likylist.base
+package com.whitipet.test.likylist.screen.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider.NewInstanceFactory

@@ -1,4 +1,4 @@
-package com.whitipet.test.likylist.base
+package com.whitipet.test.likylist.screen.base
 
 import android.os.Build
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.view.View
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import com.whitipet.test.likylist.R
-import com.whitipet.test.likylist.StatusBarUtils
+import com.whitipet.test.likylist.utils.StatusBarUtils
 
 abstract class BaseActivity : AppCompatActivity() {
 

@@ -1,7 +1,8 @@
-package com.whitipet.test.likylist
+package com.whitipet.test.likylist.screen
 
 import android.os.Bundle
-import com.whitipet.test.likylist.base.BaseActivity
+import com.whitipet.test.likylist.R
+import com.whitipet.test.likylist.screen.base.BaseActivity
 
 class MainActivity : BaseActivity() {
 
