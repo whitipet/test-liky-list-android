@@ -1,0 +1,50 @@
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+
+android {
+	compileSdkVersion 30
+	buildToolsVersion "30.0.2"
+
+	defaultConfig {
+		applicationId "com.whitipet.test.likylist"
+		addManifestPlaceholders(appName: ".Liky List")
+
+		versionCode 1
+		versionName "1.0"
+
+		minSdkVersion 21
+		targetSdkVersion 30
+	}
+
+	compileOptions {
+		incremental = true
+		sourceCompatibility JavaVersion.VERSION_1_8
+		targetCompatibility JavaVersion.VERSION_1_8
+	}
+
+	dexOptions.preDexLibraries = true
+	lintOptions.abortOnError = false
+
+	kotlinOptions {
+		jvmTarget = "1.8"
+	}
+	sourceSets.all {
+		java.srcDir("src/$name/kotlin")
+	}
+}
+
+dependencies {
+	implementation lib.androidx.appCompat
+
+	implementation lib.google.material
+	implementation lib.androidx.recyclerView
+	implementation lib.androidx.swipeRefreshLayout
+
+	implementation lib.androidx.room.runtime
+	annotationProcessor lib.androidx.room.compiler
+
+	implementation lib.square.retrofit.values()
+
+	implementation lib.kotlin.stdlib
+	implementation lib.androidx.core.coreKtx
+}

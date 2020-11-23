@@ -1,0 +1,40 @@
+buildscript {
+	apply from: file("dependencies.gradle")
+	apply from: file("dependencies_forcing.gradle")
+
+	repositories {
+		google()
+		jcenter()
+	}
+	dependencies {
+		classpath "com.android.tools.build:gradle:4.1.1"
+		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$v.kotlin"
+	}
+}
+
+subprojects {
+	repositories {
+		google()
+		jcenter()
+	}
+
+	configurations.all {
+		resolutionStrategy.forcedModules = libsForcedModules
+
+		exclude(group: "androidx.cardview", module: "cardview")
+		exclude(group: "androidx.print", module: "print")
+		exclude(group: "androidx.slidingpanelayout", module: "slidingpanelayout")
+		exclude(group: "androidx.viewpager2", module: "viewpager2")
+	}
+}
+
+if (hasProperty("buildScan")) {
+	buildScan {
+		termsOfServiceUrl = "https://gradle.com/terms-of-service"
+		termsOfServiceAgree = "yes"
+	}
+}
+
+task clean(type: Delete) {
+	delete rootProject.buildDir
+}
