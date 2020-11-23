@@ -1,0 +1,6 @@
+package com.whitipet.test.likylist.base
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider.NewInstanceFactory
+
+abstract class BaseActivityViewModel<VM : ViewModel?> : BaseActivityViewModelFactory<VM, NewInstanceFactory?>()
