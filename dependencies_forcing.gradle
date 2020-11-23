@@ -1,4 +1,5 @@
 ext.libsForcedModules = [
+		lib.androidx.activityKtx,
 		lib.androidx.appCompat,
 		lib.androidx.arch.values(),
 		lib.androidx.core.values(),
