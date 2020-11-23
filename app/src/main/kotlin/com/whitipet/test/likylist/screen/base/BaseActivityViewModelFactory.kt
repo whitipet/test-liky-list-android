@@ -3,9 +3,9 @@ package com.whitipet.test.likylist.screen.base
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-abstract class BaseActivityViewModelFactory<VM : ViewModel?, VMF : ViewModelProvider.Factory?> : BaseActivity() {
+abstract class BaseActivityViewModelFactory<VM : ViewModel, VMF : ViewModelProvider.Factory?> : BaseActivity() {
 
-	protected var viewModel: VM? = null
+	protected lateinit var viewModel: VM
 
 	protected fun provideViewModelFactory(): VMF? = null
 

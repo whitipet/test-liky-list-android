@@ -12,7 +12,7 @@
 
 		<activity-alias
 			android:name=".Launcher"
-			android:targetActivity=".screen.MainActivity">
+			android:targetActivity=".screen.list.ListActivity">
 
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
@@ -20,6 +20,6 @@
 			</intent-filter>
 		</activity-alias>
 
-		<activity android:name=".screen.MainActivity"/>
+		<activity android:name=".screen.list.ListActivity"/>
 	</application>
 </manifest>
