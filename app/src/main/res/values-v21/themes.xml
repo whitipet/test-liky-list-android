@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="Platform.Theme.LikyList" parent="Platform.V21.Theme.LikyList"/>
+	<style name="Platform.V21.Theme.LikyList" parent="Base.Theme">
+		<item name="android:statusBarColor">@color/status_bar_pre_m</item>
+		<item name="android:navigationBarColor">@color/nav_bar_pre_o</item>
+	</style>
+</resources>

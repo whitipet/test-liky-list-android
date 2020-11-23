@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="primary">#FF25C5DA</color>
+	<color name="primary_variant">#FF6EF8FF</color>
+	<color name="on_primary">#DE000000</color>
+
+	<color name="primary_surface">@color/surface</color>
+	<color name="on_primary_surface">@color/on_surface</color>
+
+	<color name="background">#121212</color>
+	<color name="on_background">@color/on_general</color>
+
+	<color name="surface">@color/background</color>
+	<color name="on_surface">@color/on_general</color>
+
+	<color name="error">#CF6679</color>
+	<color name="on_error">#000</color>
+
+	<color name="on_general">#BFFFFFFF</color>
+	<color name="on_general_variant">#87FFFFFF</color>
+
+	<color name="elevation_overlay_color">#FFF</color>
+</resources>

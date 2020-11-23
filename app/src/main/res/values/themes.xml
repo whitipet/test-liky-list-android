@@ -1,3 +1,36 @@
 <resources>
-	<style name="Theme.LikyList" parent="Theme.MaterialComponents.DayNight.DarkActionBar"/>
+	<style name="Base.Theme" parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
+	<style name="Base.Theme.LikyList" parent="Platform.Theme.LikyList">
+		<item name="android:colorPrimary">@color/background</item>
+		<item name="colorPrimary">@color/primary</item>
+		<item name="colorPrimaryVariant">@color/primary_variant</item>
+		<item name="colorOnPrimary">@color/on_primary</item>
+
+		<item name="colorPrimarySurface">@color/primary_surface</item>
+		<item name="colorOnPrimarySurface">@color/on_primary_surface</item>
+
+		<item name="android:colorBackground">@color/background</item>
+		<item name="colorBackground">@color/background</item>
+		<item name="colorOnBackground">@color/on_background</item>
+
+		<item name="colorSurface">@color/surface</item>
+		<item name="colorOnSurface">@color/on_surface</item>
+
+		<item name="colorError">@color/error</item>
+		<item name="colorOnError">@color/on_error</item>
+
+		<item name="colorOnGeneral">@color/on_general</item>
+		<item name="colorOnGeneralVariant">@color/on_general_variant</item>
+
+		<item name="android:textColorPrimary">@color/on_general</item>
+		<item name="android:textColorSecondary">@color/on_general_variant</item>
+
+		<item name="android:textColor">?android:textColorPrimary</item>
+		<item name="android:textColorHighlight">@color/primary_variant</item>
+		<item name="android:textColorLink">@color/primary</item>
+
+		<item name="elevationOverlayColor">@color/elevation_overlay_color</item>
+	</style>
+
+	<style name="Theme.LikyList" parent="Base.Theme.LikyList"/>
 </resources>

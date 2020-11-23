@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="Platform.Theme.LikyList" parent="Platform.V27.Theme.LikyList"/>
+	<style name="Platform.V27.Theme.LikyList" parent="Platform.V26.Theme.LikyList">
+		<item name="android:windowLightNavigationBar">@bool/is_light_theme</item>
+	</style>
+</resources>

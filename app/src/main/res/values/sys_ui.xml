@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<bool name="is_light_theme">true</bool>
+
+	<!--region System bars-->
+	<color name="status_bar">#99FFFFFF</color>
+	<color name="status_bar_pre_m">#4D000000</color>
+
+	<color name="nav_bar">#B3FFFFFF</color>
+	<color name="nav_bar_pre_o">#000</color>
+	<!--endregion System bars-->
+</resources>
