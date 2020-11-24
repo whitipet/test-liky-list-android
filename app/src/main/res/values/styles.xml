@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+	<style name="Widget.TextView" parent="Widget.MaterialComponents.TextView">
+		<item name="android:includeFontPadding">false</item>
+		<item name="android:fontFamily">sans-serif</item>
+		<item name="android:breakStrategy" tools:ignore="NewApi">simple</item>
+		<item name="android:hyphenationFrequency" tools:ignore="NewApi">none</item>
+	</style>
+
+	<style name="Widget.EditText" parent="Widget.AppCompat.EditText">
+		<item name="android:includeFontPadding">false</item>
+		<item name="android:breakStrategy" tools:ignore="NewApi">balanced</item>
+		<item name="android:hyphenationFrequency" tools:ignore="NewApi">none</item>
+	</style>
+
+	<style name="Widget.Button.Icon" parent="">
+		<item name="android:layout_width">48dp</item>
+		<item name="android:layout_height">48dp</item>
+		<item name="android:padding">12dp</item>
+		<item name="android:background">@drawable/bg_btn_icon</item>
+	</style>
+</resources>

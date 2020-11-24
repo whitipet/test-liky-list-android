@@ -30,6 +30,9 @@
 		<item name="android:textColorLink">@color/primary</item>
 
 		<item name="elevationOverlayColor">@color/elevation_overlay_color</item>
+
+		<item name="android:textViewStyle">@style/Widget.TextView</item>
+		<item name="android:editTextStyle">@style/Widget.EditText</item>
 	</style>
 
 	<style name="Theme.LikyList" parent="Base.Theme.LikyList"/>

@@ -10,6 +10,8 @@ import com.whitipet.test.likylist.utils.StatusBarUtils
 
 abstract class BaseActivity : AppCompatActivity() {
 
+	protected val rootView: View by lazy { findViewById(android.R.id.content) }
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
