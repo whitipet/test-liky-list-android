@@ -14,11 +14,11 @@ interface MedicineDao {
 	fun getAll(): LiveData<List<Medicine>>
 
 	@Query("SELECT * FROM medicine WHERE id LIKE :id LIMIT 1")
-	fun getById(id: String): LiveData<Medicine>
+	fun getById(id: Int): LiveData<Medicine>
 
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
-	fun insert(medicine: Medicine)
+	fun insert(medicine: Medicine?)
 
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
-	fun insert(medicines: List<Medicine>)
+	fun insert(medicines: List<Medicine?>)
 }

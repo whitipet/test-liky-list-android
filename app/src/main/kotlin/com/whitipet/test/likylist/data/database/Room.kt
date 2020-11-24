@@ -24,7 +24,7 @@ abstract class Room : RoomDatabase() {
 			}
 
 		private fun buildDatabase(context: Context) =
-			androidx.room.Room.databaseBuilder(context.applicationContext, Room::class.java, "Sample.db")
+			androidx.room.Room.databaseBuilder(context.applicationContext, Room::class.java, "Room.db")
 				.allowMainThreadQueries()
 				.build()
 	}

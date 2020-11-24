@@ -1,7 +1,6 @@
 package com.whitipet.test.likylist.data
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.whitipet.test.likylist.data.database.Room
 import com.whitipet.test.likylist.data.entity.Medicine
@@ -16,8 +15,8 @@ object MedicineRepository {
 
 	private lateinit var context: Context
 
-	fun setContext(con: Context) {
-		context = con
+	fun setContext(context: Context) {
+		this.context = context
 	}
 
 	fun requestMedicines() {
@@ -26,43 +25,66 @@ object MedicineRepository {
 				call: Call<PageResults<RetrofitMedicine>>?,
 				response: Response<PageResults<RetrofitMedicine>>?,
 			) {
-				Log.d("MedicineRepository", "getMedicines onResponse: " + response?.body())
-				if (response?.body() != null) {
-					val retrofitMedicines: List<RetrofitMedicine> = response.body()!!.results
-					val medicines: MutableList<Medicine> = mutableListOf()
-					for (retrofitMedicine in retrofitMedicines) {
-						medicines.add(Medicine(
-							retrofitMedicine.id,
-							retrofitMedicine.tradeLabel.name,
-							retrofitMedicine.manufacturer?.name,
-							retrofitMedicine.packaging.description,
-							retrofitMedicine.composition.inn.name,
-							retrofitMedicine.composition.pharmForm.name,
-							retrofitMedicine.composition.description,
-						))
-					}
-					Room.getInstance(context).medicineDao().insert(medicines)
+				val medicines: List<Medicine?> = (response?.body()?.results ?: emptyList()).map {
+					mapRetrofitMedicineToMedicine(it)
 				}
+				Room.getInstance(context).medicineDao().insert(medicines)
 			}
 
 			override fun onFailure(call: Call<PageResults<RetrofitMedicine>>?, t: Throwable?) {
-				Log.d("MedicineRepository", "getMedicines onFailure: $t")
+				// TODO
 			}
 		})
 	}
 
-	fun requestMedicine(medicineId: String) {
+	fun requestMedicines(searchQuery: String, responseData: ResponseData<List<Medicine?>>) {
+		Retrofit.medicineRetrofitService.getMedicines(searchQuery)
+			.enqueue(object : Callback<PageResults<RetrofitMedicine>> {
+				override fun onResponse(
+					call: Call<PageResults<RetrofitMedicine>>?,
+					response: Response<PageResults<RetrofitMedicine>>?,
+				) {
+					val medicines: List<Medicine?> = (response?.body()?.results ?: emptyList()).map {
+						mapRetrofitMedicineToMedicine(it)
+					}
+					responseData.onResponse(medicines)
+				}
+
+				override fun onFailure(call: Call<PageResults<RetrofitMedicine>>?, t: Throwable?) {
+					// TODO
+				}
+			})
+	}
+
+	fun requestMedicine(medicineId: Int) {
 		Retrofit.medicineRetrofitService.getMedicine(medicineId).enqueue(object : Callback<RetrofitMedicine> {
 			override fun onResponse(call: Call<RetrofitMedicine>?, response: Response<RetrofitMedicine>?) {
-				// TODO:
-				Log.d("MedicineRepository", "getMedicine onResponse: " + response?.body())
+				Room.getInstance(context).medicineDao().insert(mapRetrofitMedicineToMedicine(response?.body()))
 			}
 
 			override fun onFailure(call: Call<RetrofitMedicine>?, t: Throwable?) {
-				Log.d("MedicineRepository", "getMedicine onFailure: $t")
+				// TODO
 			}
 		})
 	}
 
 	fun getMedicinesObservable(): LiveData<List<Medicine>> = Room.getInstance(context).medicineDao().getAll()
+
+	fun getMedicineObservable(medicineId: Int): LiveData<Medicine> =
+		Room.getInstance(context).medicineDao().getById(medicineId)
+
+	private fun mapRetrofitMedicineToMedicine(retrofitMedicine: RetrofitMedicine?): Medicine? {
+		if (retrofitMedicine != null) {
+			return Medicine(
+				retrofitMedicine.id,
+				retrofitMedicine.tradeLabel?.name,
+				retrofitMedicine.composition?.inn?.name,
+				retrofitMedicine.composition?.description,
+				retrofitMedicine.packaging?.description,
+				retrofitMedicine.manufacturer?.name,
+				retrofitMedicine.composition?.pharmForm?.name,
+			)
+		}
+		return null
+	}
 }
