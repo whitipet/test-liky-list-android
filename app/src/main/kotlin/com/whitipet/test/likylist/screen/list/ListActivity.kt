@@ -1,35 +1,46 @@
 package com.whitipet.test.likylist.screen.list
 
+import android.app.ActivityOptions
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.view.Window
 import androidx.core.graphics.Insets
 import androidx.core.view.*
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 import com.whitipet.test.likylist.R
 import com.whitipet.test.likylist.screen.base.BaseActivityViewModel
+import com.whitipet.test.likylist.screen.medicine.MedicineActivity
 import com.whitipet.test.likylist.utils.add
-import com.whitipet.test.likylist.utils.obtainViewInsets
+import com.whitipet.test.likylist.utils.obtainInsets
 import com.whitipet.test.likylist.utils.setMargins
 import com.whitipet.test.likylist.utils.setPadding
 
+
 class ListActivity : BaseActivityViewModel<ListViewModel>() {
+
+	override fun provideViewModel(): Class<ListViewModel> = ListViewModel::class.java
+
+	override fun beforeOnCreateSuper() {
+		super.beforeOnCreateSuper()
+		window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+		window.sharedElementsUseOverlay = false
+		setExitSharedElementCallback(MaterialContainerTransformSharedElementCallback())
+	}
 
 	override fun provideContentView() = R.layout.activity_list
 
 	private val rv: RecyclerView by lazy { findViewById(R.id.rv_list) }
 	private val btnSearch: View by lazy { findViewById(R.id.btn_list_search) }
 
-	override fun provideViewModel(): Class<ListViewModel> = ListViewModel::class.java
-
 	override fun configure(savedInstanceState: Bundle?) {
 		//region Window insets
-		val insetsRV: Insets = rv.obtainViewInsets()
+		val insetsRV: Insets = rv.obtainInsets()
 		val offsetBtnSearchLeft = btnSearch.marginLeft
 		val offsetBtnSearchTop = btnSearch.marginTop
 		val offsetBtnSearchRight = btnSearch.marginRight
 		val offsetBtnSearchBottom = btnSearch.marginBottom
-		ViewCompat.setOnApplyWindowInsetsListener(rootView) { _: View?, windowInsets: WindowInsetsCompat? ->
+		ViewCompat.setOnApplyWindowInsetsListener(contentRootView) { _: View?, windowInsets: WindowInsetsCompat? ->
 			val insets: Insets = windowInsets?.stableInsets ?: Insets.NONE
 			rv.setPadding(insetsRV.add(insets))
 			btnSearch.setMargins(
@@ -42,8 +53,11 @@ class ListActivity : BaseActivityViewModel<ListViewModel>() {
 		}
 		//endregion Window insets
 
-		val medicinesListAdapter = MedicinesListAdapter { medicine ->
-			Log.d("ListActivity", "configure: " + medicine)
+		val medicinesListAdapter = MedicinesListAdapter { medicineId, itemView ->
+			startActivity(
+				MedicineActivity.intent(this, medicineId),
+				ActivityOptions.makeSceneTransitionAnimation(this, itemView, "sharedElement").toBundle()
+			)
 		}
 		rv.setHasFixedSize(true)
 		rv.adapter = medicinesListAdapter

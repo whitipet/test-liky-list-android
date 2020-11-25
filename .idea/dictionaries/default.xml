@@ -1,5 +1,5 @@
-<default name="ProjectDictionaryState">
-  <dictionary name="whitipet">
+<component name="ProjectDictionaryState">
+  <dictionary name="default">
     <words>
       <w>jetbrains</w>
       <w>lifecycles</w>
@@ -11,4 +11,4 @@
       <w>whitipet</w>
     </words>
   </dictionary>
-</default>
+</component>

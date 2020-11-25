@@ -7,7 +7,7 @@ abstract class BaseActivityViewModelFactory<VM : ViewModel, VMF : ViewModelProvi
 
 	protected lateinit var viewModel: VM
 
-	protected fun provideViewModelFactory(): VMF? = null
+	protected open fun provideViewModelFactory(): VMF? = null
 
 	protected abstract fun provideViewModel(): Class<VM>
 

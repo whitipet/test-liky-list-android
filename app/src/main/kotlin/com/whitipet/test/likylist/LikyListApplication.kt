@@ -7,6 +7,7 @@ open class LikyListApplication : Application() {
 
 	override fun onCreate() {
 		super.onCreate()
+		//It should not be so. It's just a quick solution for a test application.
 		MedicineRepository.setContext(applicationContext)
 	}
 }

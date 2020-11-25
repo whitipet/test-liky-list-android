@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.whitipet.test.likylist.R
 import com.whitipet.test.likylist.data.entity.Medicine
 
-class MedicinesListAdapter(private val onClick: (Medicine) -> Unit) :
+class MedicinesListAdapter(private val onClick: (Int, View) -> Unit) :
 	ListAdapter<Medicine, MedicinesListAdapter.ViewHolder>(FlowerDiffCallback) {
 
-	class ViewHolder(itemView: View, val onClick: (Medicine) -> Unit) : RecyclerView.ViewHolder(itemView) {
+	class ViewHolder(itemView: View, val onClick: (Int, View) -> Unit) : RecyclerView.ViewHolder(itemView) {
 
 		private val tvTradeLabel: TextView = itemView.findViewById(R.id.tv_medicine_trade_label)
 		private val tvManufacturerName: TextView = itemView.findViewById(R.id.tv_medicine_manufacturer_name)
@@ -23,7 +23,7 @@ class MedicinesListAdapter(private val onClick: (Medicine) -> Unit) :
 		init {
 			itemView.setOnClickListener {
 				currentItem?.let {
-					onClick(it)
+					onClick(it.id, itemView)
 				}
 			}
 		}

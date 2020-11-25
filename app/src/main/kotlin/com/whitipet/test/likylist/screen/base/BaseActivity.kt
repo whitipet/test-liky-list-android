@@ -10,11 +10,24 @@ import com.whitipet.test.likylist.utils.StatusBarUtils
 
 abstract class BaseActivity : AppCompatActivity() {
 
-	protected val rootView: View by lazy { findViewById(android.R.id.content) }
+	protected val contentRootView: View by lazy { findViewById(android.R.id.content) }
 
 	override fun onCreate(savedInstanceState: Bundle?) {
+		beforeOnCreateSuper()
 		super.onCreate(savedInstanceState)
 
+		initBeforeUiCreated()
+
+		setContentView(provideContentView())
+
+		configure(savedInstanceState)
+	}
+
+	protected abstract fun provideContentView(): Int
+
+
+	@CallSuper
+	protected open fun beforeOnCreateSuper() {
 		val decorView = window.decorView
 		decorView.systemUiVisibility = (decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION)
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -25,15 +38,7 @@ abstract class BaseActivity : AppCompatActivity() {
 			}
 		}
 		StatusBarUtils.setIconsModeThemeDepending(window)
-
-		initBeforeUiCreated()
-
-		setContentView(provideContentView())
-
-		configure(savedInstanceState)
 	}
-
-	protected abstract fun provideContentView(): Int
 
 	@CallSuper
 	protected open fun initBeforeUiCreated() {
