@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:targetApi="n_mr1">
+
+	<shortcut
+		android:enabled="true"
+		android:icon="@drawable/ic_app_shortcut_search"
+		android:shortcutDisabledMessage="@string/app_shortcut_search_disabled_message"
+		android:shortcutId="search"
+		android:shortcutLongLabel="@string/app_shortcut_search_long_label"
+		android:shortcutShortLabel="@string/app_shortcut_search_short_labels">
+
+		<intent
+			android:action="com.whitipet.test.likylist.intent.action.open.SEARCH"
+			android:targetPackage="com.whitipet.test.likylist"/>
+	</shortcut>
+</shortcuts> 

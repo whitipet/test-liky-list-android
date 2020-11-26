@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_shortcut_search_short_labels">Search</string>
+	<string name="app_shortcut_search_long_label">@string/app_shortcut_search_short_labels</string>
+	<string name="app_shortcut_search_disabled_message">Search disabled</string>
+</resources>
