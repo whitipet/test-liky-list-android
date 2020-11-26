@@ -12,7 +12,7 @@
 	tools:context=".screen.list.MedicinesListAdapter">
 
 	<ImageView
-		android:id="@+id/view_medicine_placeholder"
+		android:id="@+id/view_item_medicine_placeholder"
 		android:layout_width="40dp"
 		android:layout_height="40dp"
 		android:background="#1A8E8E8E"
@@ -26,22 +26,23 @@
 		android:orientation="vertical">
 
 		<TextView
-			android:id="@+id/tv_medicine_trade_label"
+			android:id="@+id/tv_item_medicine_trade_label"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:ellipsize="end"
 			android:maxLines="1"
+			android:textAppearance="?textAppearanceBody1"
 			android:textColor="?colorOnGeneral"
-			android:textSize="16sp"
 			tools:text="@tools:sample/lorem/random"/>
 
 		<TextView
-			android:id="@+id/tv_medicine_manufacturer_name"
+			android:id="@+id/tv_item_medicine_manufacturer_name"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="4dp"
 			android:ellipsize="end"
 			android:maxLines="1"
+			android:textAppearance="?textAppearanceBody2"
 			android:textColor="?colorOnGeneralVariant"
 			android:textSize="12sp"
 			tools:text="@tools:sample/lorem/random"/>

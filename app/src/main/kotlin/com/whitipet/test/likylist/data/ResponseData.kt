@@ -4,7 +4,7 @@ interface ResponseData<T> {
 
 	fun onResponse(isSuccess: Boolean, data: T?, t: Throwable?)
 
-	fun onSuccess(data: T) {
+	fun onSuccess(data: T?) {
 		onResponse(true, data, null)
 	}
 

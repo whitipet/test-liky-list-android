@@ -13,7 +13,7 @@ class ListViewModel : ViewModel() {
 		updateData()
 	}
 
-	val medicinesObservable: LiveData<List<Medicine>> = MedicineRepository.getMedicinesObservable()
+	val medicinesObservable: LiveData<List<Medicine>?> = MedicineRepository.getMedicinesObservable()
 
 	private val _dataUpdateIndicatorObservable = MutableLiveData<Void>()
 	val dataUpdateIndicatorObservable: LiveData<Void>

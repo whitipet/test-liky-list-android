@@ -58,22 +58,24 @@ object MedicineRepository {
 			})
 	}
 
-	fun requestMedicine(medicineId: Int) {
+	fun requestMedicine(medicineId: Int, responseData: ResponseData<Medicine?>? = null) {
 		Retrofit.medicineRetrofitService.getMedicine(medicineId).enqueue(object : Callback<RetrofitMedicine> {
 			override fun onResponse(call: Call<RetrofitMedicine>?, response: Response<RetrofitMedicine>?) {
-				Room.getInstance(context).medicineDao().insert(mapRetrofitMedicineToMedicine(response?.body()))
+				val medicine: Medicine? = mapRetrofitMedicineToMedicine(response?.body())
+				Room.getInstance(context).medicineDao().insert(medicine)
+				responseData?.onSuccess(medicine)
 			}
 
 			override fun onFailure(call: Call<RetrofitMedicine>?, t: Throwable?) {
-				// TODO
+				responseData?.onError(t)
 			}
 		})
 	}
 
-	fun getMedicinesObservable(): LiveData<List<Medicine>> =
+	fun getMedicinesObservable(): LiveData<List<Medicine>?> =
 		Transformations.distinctUntilChanged(Room.getInstance(context).medicineDao().getAll())
 
-	fun getMedicineObservable(medicineId: Int): LiveData<Medicine> =
+	fun getMedicineObservable(medicineId: Int): LiveData<Medicine?> =
 		Transformations.distinctUntilChanged(Room.getInstance(context).medicineDao().getById(medicineId))
 
 	private fun mapRetrofitMedicineToMedicine(retrofitMedicine: RetrofitMedicine?): Medicine? {

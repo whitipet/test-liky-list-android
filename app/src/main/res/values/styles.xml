@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+
 	<style name="Widget.TextView" parent="Widget.MaterialComponents.TextView">
 		<item name="android:includeFontPadding">false</item>
 		<item name="android:fontFamily">sans-serif</item>
@@ -18,5 +19,31 @@
 		<item name="android:layout_height">48dp</item>
 		<item name="android:padding">12dp</item>
 		<item name="android:background">@drawable/bg_btn_icon</item>
+	</style>
+
+	<style name="Wrapper.Medicine.Element" parent="">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:orientation">horizontal</item>
+		<item name="android:paddingTop">12dp</item>
+		<item name="android:paddingBottom">12dp</item>
+		<item name="android:visibility">gone</item>
+	</style>
+	<style name="Widget.Medicine.Element.Icon" parent="">
+		<item name="android:layout_width">24dp</item>
+		<item name="android:layout_height">24dp</item>
+		<item name="android:layout_marginEnd">12dp</item>
+	</style>
+	<style name="Widget.Medicine.Element.Title" parent="">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textAppearance">?textAppearanceOverline</item>
+		<item name="android:textColor">?colorOnGeneralVariant</item>
+	</style>
+	<style name="Widget.Medicine.Element.Text" parent="">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_marginTop">4dp</item>
+		<item name="android:textAppearance">?textAppearanceBody1</item>
 	</style>
 </resources>

@@ -6,4 +6,10 @@
 
 		<attr name="colorBackground" format="color"/>
 	</declare-styleable>
+
+	<declare-styleable name="MedicineElement">
+		<attr name="android:src" format="reference"/>
+		<attr name="android:title" format="string"/>
+		<attr name="android:text" format="string"/>
+	</declare-styleable>
 </resources>

@@ -31,6 +31,7 @@
 				android:id="@+id/toolbar_medicine"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
 				android:minHeight="56dp"
 				android:padding="4dp"
 				app:layout_collapseMode="pin">
@@ -40,6 +41,23 @@
 					style="@style/Widget.Button.Icon"
 					app:srcCompat="@drawable/ic_close"
 					app:tint="?colorOnSurface"/>
+
+				<TextView
+					android:id="@+id/tv_medicine_toolbar_title"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginEnd="12dp"
+					android:layout_weight="1"
+					android:alpha="0"
+					android:ellipsize="end"
+					android:maxLines="1"
+					android:stateListAnimator="@animator/sla_toolbar_title"
+					android:textAppearance="?textAppearanceHeadline6"
+					android:textColor="?colorOnSurface"
+					tools:alpha="1"
+					tools:stateListAnimator="@null"
+					tools:text="Medicine title"/>
 			</LinearLayout>
 		</com.google.android.material.appbar.CollapsingToolbarLayout>
 	</com.google.android.material.appbar.AppBarLayout>
@@ -53,10 +71,73 @@
 
 		<LinearLayout
 			android:layout_width="match_parent"
-			android:layout_height="10000dp"
-			android:orientation="vertical">
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:paddingStart="16dp"
+			android:paddingTop="8dp"
+			android:paddingEnd="16dp"
+			android:paddingBottom="16dp">
 
+			<TextView
+				android:id="@+id/tv_item_medicine_trade_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:paddingTop="12dp"
+				android:paddingBottom="12dp"
+				android:textAppearance="?textAppearanceHeadline5"
+				android:visibility="visible"
+				tools:text="Medicine title"/>
 
+			<com.whitipet.test.likylist.widget.MedicineElement
+				android:id="@+id/me_medicine_packaging_description"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:src="@drawable/ic_pack"
+				android:title="Packaging description"
+				android:visibility="gone"
+				tools:text="Packaging description"
+				tools:visibility="visible"/>
+
+			<com.whitipet.test.likylist.widget.MedicineElement
+				android:id="@+id/me_medicine_composition_description"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:src="@drawable/ic_subject"
+				android:title="Composition description"
+				android:visibility="gone"
+				tools:text="Composition description"
+				tools:visibility="visible"/>
+
+			<com.whitipet.test.likylist.widget.MedicineElement
+				android:id="@+id/me_medicine_composition_pharm_form"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:src="@drawable/ic_pill"
+				android:title="Pharm form"
+				android:visibility="gone"
+				tools:text="Pharm form"
+				tools:visibility="visible"/>
+
+			<com.whitipet.test.likylist.widget.MedicineElement
+				android:id="@+id/me_medicine_composition_inn"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:src="@drawable/ic_copyright"
+				android:title="Composition inn"
+				android:visibility="gone"
+				tools:text="Composition inn"
+				tools:visibility="visible"/>
+
+			<com.whitipet.test.likylist.widget.MedicineElement
+				android:id="@+id/me_medicine_manufacturer_name"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:src="@drawable/ic_factory"
+				android:title="Manufacturer name"
+				android:visibility="gone"
+				tools:text="Manufacturer name"
+				tools:visibility="visible"/>
 		</LinearLayout>
 	</androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

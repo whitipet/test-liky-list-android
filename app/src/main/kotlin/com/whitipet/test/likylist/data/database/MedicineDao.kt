@@ -11,10 +11,10 @@ import com.whitipet.test.likylist.data.entity.Medicine
 interface MedicineDao {
 
 	@Query("SELECT * FROM medicine")
-	fun getAll(): LiveData<List<Medicine>>
+	fun getAll(): LiveData<List<Medicine>?>
 
 	@Query("SELECT * FROM medicine WHERE id LIKE :id LIMIT 1")
-	fun getById(id: Int): LiveData<Medicine>
+	fun getById(id: Int): LiveData<Medicine?>
 
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
 	fun insert(medicine: Medicine?)
