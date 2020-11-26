@@ -25,6 +25,8 @@
 
 		<activity android:name=".screen.list.ListActivity"/>
 
+		<activity android:name=".screen.search.SearchActivity"/>
+
 		<activity android:name=".screen.medicine.MedicineActivity"/>
 	</application>
 </manifest>

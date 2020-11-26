@@ -12,9 +12,9 @@ import com.google.android.material.transition.platform.MaterialContainerTransfor
 import com.whitipet.test.likylist.R
 import com.whitipet.test.likylist.screen.base.BaseActivityViewModel
 import com.whitipet.test.likylist.screen.medicine.MedicineActivity
+import com.whitipet.test.likylist.screen.search.SearchActivity
 import com.whitipet.test.likylist.utils.*
 import com.whitipet.test.likylist.widget.SwipeRefreshLayout
-
 
 class ListActivity : BaseActivityViewModel<ListViewModel>() {
 
@@ -58,5 +58,7 @@ class ListActivity : BaseActivityViewModel<ListViewModel>() {
 		rv.setHasFixedSize(true)
 		rv.adapter = medicinesListAdapter
 		viewModel.medicinesObservable.observe(this, { medicinesListAdapter.submitList(it) })
+
+		btnSearch.setOnClickListener({ SearchActivity.open(this) })
 	}
 }
