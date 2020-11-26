@@ -11,5 +11,5 @@ class ListViewModel : ViewModel() {
 		MedicineRepository.requestMedicines()
 	}
 
-	fun getMedicinesObservable(): LiveData<List<Medicine>> = MedicineRepository.getMedicinesObservable()
+	val medicinesObservable: LiveData<List<Medicine>> = MedicineRepository.getMedicinesObservable()
 }

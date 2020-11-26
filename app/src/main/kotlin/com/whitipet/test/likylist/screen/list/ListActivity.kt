@@ -61,7 +61,7 @@ class ListActivity : BaseActivityViewModel<ListViewModel>() {
 		}
 		rv.setHasFixedSize(true)
 		rv.adapter = medicinesListAdapter
-		viewModel.getMedicinesObservable().observe(this, {
+		viewModel.medicinesObservable.observe(this, {
 			medicinesListAdapter.submitList(it)
 		})
 	}
