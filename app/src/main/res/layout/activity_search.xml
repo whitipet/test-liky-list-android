@@ -1,7 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".screen.search.SearchActivity"/>
+	tools:context=".screen.search.SearchActivity">
+
+	<androidx.recyclerview.widget.RecyclerView
+		android:id="@+id/rv_search"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:clipToPadding="false"
+		android:overScrollMode="never"
+		android:paddingTop="8dp"
+		android:paddingBottom="16dp"
+		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+		tools:listitem="@layout/item_medicine"
+		tools:paddingTop="72dp"/>
+
+	<TextView
+		android:id="@+id/empty_view_search"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="?colorBackground"
+		android:gravity="center_horizontal"
+		android:padding="16dp"
+		android:text="Enter a search query, or refine the current one."
+		android:textColor="?colorOnGeneralVariant"
+		android:textSize="18sp"
+		tools:translationY="72dp"/>
+
+	<LinearLayout
+		android:id="@+id/view_search_search"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="8dp"
+		android:animateLayoutChanges="true"
+		android:background="?colorSurface"
+		android:elevation="4dp"
+		android:gravity="center_vertical"
+		android:minHeight="48dp"
+		android:orientation="horizontal">
+
+		<ImageView
+			android:id="@+id/btn_search_back"
+			style="@style/Widget.Button.Icon"
+			android:background="@null"
+			app:srcCompat="@drawable/ic_back"
+			app:tint="?colorOnSurface"/>
+
+		<EditText
+			android:id="@+id/et_search"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:background="@null"
+			android:ellipsize="none"
+			android:fadingEdgeLength="60dp"
+			android:focusable="true"
+			android:hint="Search"
+			android:imeOptions="actionNone|flagNoExtractUi"
+			android:importantForAutofill="no"
+			android:inputType="textAutoComplete"
+			android:paddingStart="14dp"
+			android:paddingTop="4dp"
+			android:paddingEnd="16dp"
+			android:paddingBottom="4dp"
+			android:requiresFadingEdge="horizontal"
+			android:singleLine="true"
+			android:textSize="16sp"/>
+
+		<ImageView
+			android:id="@+id/btn_search_clear"
+			style="@style/Widget.Button.Icon"
+			android:background="@null"
+			android:visibility="invisible"
+			app:srcCompat="@drawable/ic_clear"
+			app:tint="?colorOnSurface"
+			tools:visibility="visible"/>
+	</LinearLayout>
+</FrameLayout>

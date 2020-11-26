@@ -20,7 +20,7 @@ object MedicineRepository {
 		this.context = context
 	}
 
-	fun requestMedicines(responseData: ResponseData<List<Medicine?>>? = null) {
+	fun searchMedicines(responseData: ResponseData<List<Medicine?>>? = null) {
 		Retrofit.medicineRetrofitService.getMedicines().enqueue(object : Callback<PageResults<RetrofitMedicine>> {
 			override fun onResponse(
 				call: Call<PageResults<RetrofitMedicine>>?,
@@ -39,23 +39,27 @@ object MedicineRepository {
 		})
 	}
 
-	fun requestMedicines(searchQuery: String, responseData: ResponseData<List<Medicine?>>? = null) {
-		Retrofit.medicineRetrofitService.getMedicines(searchQuery)
-			.enqueue(object : Callback<PageResults<RetrofitMedicine>> {
-				override fun onResponse(
-					call: Call<PageResults<RetrofitMedicine>>?,
-					response: Response<PageResults<RetrofitMedicine>>?,
-				) {
-					val medicines: List<Medicine?> = (response?.body()?.results ?: emptyList()).map {
-						mapRetrofitMedicineToMedicine(it)
-					}
-					responseData?.onSuccess(medicines)
+	fun searchMedicines(
+		searchQuery: String,
+		responseData: ResponseData<List<Medicine?>>? = null,
+	): Call<PageResults<RetrofitMedicine>> {
+		val call: Call<PageResults<RetrofitMedicine>> = Retrofit.medicineRetrofitService.getMedicines(searchQuery)
+		call.enqueue(object : Callback<PageResults<RetrofitMedicine>> {
+			override fun onResponse(
+				call: Call<PageResults<RetrofitMedicine>>?,
+				response: Response<PageResults<RetrofitMedicine>>?,
+			) {
+				val medicines: List<Medicine?> = (response?.body()?.results ?: emptyList()).map {
+					mapRetrofitMedicineToMedicine(it)
 				}
+				responseData?.onSuccess(medicines)
+			}
 
-				override fun onFailure(call: Call<PageResults<RetrofitMedicine>>?, t: Throwable?) {
-					responseData?.onError(t)
-				}
-			})
+			override fun onFailure(call: Call<PageResults<RetrofitMedicine>>?, t: Throwable?) {
+				responseData?.onError(t)
+			}
+		})
+		return call
 	}
 
 	fun requestMedicine(medicineId: Int, responseData: ResponseData<Medicine?>? = null) {

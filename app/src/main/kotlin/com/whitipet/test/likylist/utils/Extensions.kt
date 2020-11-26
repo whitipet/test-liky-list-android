@@ -83,3 +83,5 @@ fun View.requestSize(onGotViewSize: (Int, Int) -> Unit) {
 }
 
 fun Int.toDp(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
+
+fun Float.toDp(): Float = this * Resources.getSystem().displayMetrics.density

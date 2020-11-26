@@ -25,6 +25,6 @@ class ListViewModel : ViewModel() {
 	}
 
 	fun updateData() {
-		MedicineRepository.requestMedicines(responseData)
+		MedicineRepository.searchMedicines(responseData)
 	}
 }

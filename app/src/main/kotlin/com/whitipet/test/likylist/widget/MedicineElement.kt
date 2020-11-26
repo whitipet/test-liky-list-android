@@ -2,7 +2,6 @@ package com.whitipet.test.likylist.widget
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -46,10 +45,8 @@ class MedicineElement : LinearLayout {
 		val typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.MedicineElement)
 		try {
 			val iconId: Int = typedArray.getResourceId(R.styleable.MedicineElement_android_src, -1)
-			Log.d("MedicineElement", "init: " + iconId)
 			if (iconId != -1) {
 				val drawable = AppCompatResources.getDrawable(getContext(), iconId)
-				Log.d("MedicineElement", "init: " + drawable)
 				findViewById<ImageView>(R.id.iv_medicine_element_icon).setImageDrawable(drawable)
 			}
 			findViewById<TextView>(R.id.tv_medicine_element_title).text =
