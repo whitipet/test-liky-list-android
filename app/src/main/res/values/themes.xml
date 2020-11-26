@@ -6,6 +6,10 @@
 		<item name="colorPrimaryVariant">@color/primary_variant</item>
 		<item name="colorOnPrimary">@color/on_primary</item>
 
+		<item name="colorSecondary">@color/primary</item>
+		<item name="colorSecondaryVariant">@color/primary_variant</item>
+		<item name="colorOnSecondary">@color/on_primary</item>
+
 		<item name="colorPrimarySurface">@color/primary_surface</item>
 		<item name="colorOnPrimarySurface">@color/on_primary_surface</item>
 

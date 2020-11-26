@@ -5,16 +5,15 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import androidx.core.graphics.Insets
-import androidx.core.view.*
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 import com.whitipet.test.likylist.R
 import com.whitipet.test.likylist.screen.base.BaseActivityViewModel
 import com.whitipet.test.likylist.screen.medicine.MedicineActivity
-import com.whitipet.test.likylist.utils.add
-import com.whitipet.test.likylist.utils.obtainInsets
-import com.whitipet.test.likylist.utils.setMargins
-import com.whitipet.test.likylist.utils.setPadding
+import com.whitipet.test.likylist.utils.*
+import com.whitipet.test.likylist.widget.SwipeRefreshLayout
 
 
 class ListActivity : BaseActivityViewModel<ListViewModel>() {
@@ -30,28 +29,25 @@ class ListActivity : BaseActivityViewModel<ListViewModel>() {
 
 	override fun provideContentView() = R.layout.activity_list
 
+	private val srl: SwipeRefreshLayout by lazy { findViewById(R.id.srl_list) }
 	private val rv: RecyclerView by lazy { findViewById(R.id.rv_list) }
 	private val btnSearch: View by lazy { findViewById(R.id.btn_list_search) }
 
 	override fun configure(savedInstanceState: Bundle?) {
 		//region Window insets
 		val insetsRV: Insets = rv.obtainInsets()
-		val offsetBtnSearchLeft = btnSearch.marginLeft
-		val offsetBtnSearchTop = btnSearch.marginTop
-		val offsetBtnSearchRight = btnSearch.marginRight
-		val offsetBtnSearchBottom = btnSearch.marginBottom
+		val offsetsBtnSearch: Offsets = btnSearch.obtainOffsets()
 		ViewCompat.setOnApplyWindowInsetsListener(contentRootView) { _: View?, windowInsets: WindowInsetsCompat? ->
 			val insets: Insets = windowInsets?.stableInsets ?: Insets.NONE
+			srl.setProgressOffset(insets.top)
 			rv.setPadding(insetsRV.add(insets))
-			btnSearch.setMargins(
-				offsetBtnSearchLeft + insets.left,
-				offsetBtnSearchTop + insets.top,
-				offsetBtnSearchRight + insets.right,
-				offsetBtnSearchBottom + insets.bottom
-			)
+			btnSearch.setMargins(offsetsBtnSearch.add(insets))
 			windowInsets
 		}
 		//endregion Window insets
+
+		srl.setOnRefreshListener { viewModel.updateData() }
+		viewModel.dataUpdateIndicatorObservable.observe(this, { srl.isRefreshing = false })
 
 		val medicinesListAdapter = MedicinesListAdapter { medicineId, itemView ->
 			startActivity(
@@ -61,8 +57,6 @@ class ListActivity : BaseActivityViewModel<ListViewModel>() {
 		}
 		rv.setHasFixedSize(true)
 		rv.adapter = medicinesListAdapter
-		viewModel.medicinesObservable.observe(this, {
-			medicinesListAdapter.submitList(it)
-		})
+		viewModel.medicinesObservable.observe(this, { medicinesListAdapter.submitList(it) })
 	}
 }

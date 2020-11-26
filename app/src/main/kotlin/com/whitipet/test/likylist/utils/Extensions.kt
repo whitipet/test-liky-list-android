@@ -1,14 +1,39 @@
 package com.whitipet.test.likylist.utils
 
+import android.content.res.Resources
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import androidx.annotation.FloatRange
 import androidx.core.graphics.Insets
+import androidx.core.view.marginBottom
+import androidx.core.view.marginLeft
+import androidx.core.view.marginRight
+import androidx.core.view.marginTop
 
 fun View.obtainInsets() = Insets.of(this.paddingLeft, this.paddingTop, this.paddingRight, this.paddingBottom)
 
+typealias Offsets = Insets
+
+fun View.obtainOffsets() = Insets.of(this.marginLeft, this.marginTop, this.marginRight, this.marginBottom)
+
 fun View.setPadding(insets: Insets) = this.setPadding(insets.left, insets.top, insets.right, insets.bottom)
+
+fun View.setMargins(offsets: Offsets) {
+	this.setMargins(offsets.left, offsets.top, offsets.right, offsets.bottom)
+}
+
+fun View.setMargins(left: Int? = null, top: Int? = null, right: Int? = null, bottom: Int? = null) {
+	val lp = layoutParams as? ViewGroup.MarginLayoutParams ?: return
+	lp.setMargins(
+		left ?: lp.leftMargin,
+		top ?: lp.topMargin,
+		right ?: lp.rightMargin,
+		bottom ?: lp.rightMargin
+	)
+	layoutParams = lp
+}
+
 
 fun Insets.add(insets: Insets): Insets = Insets.of(
 	this.left + insets.left,
@@ -31,17 +56,6 @@ fun Insets.removeBottom(): Insets = Insets.of(
 	this.right,
 	0,
 )
-
-fun View.setMargins(left: Int? = null, top: Int? = null, right: Int? = null, bottom: Int? = null) {
-	val lp = layoutParams as? ViewGroup.MarginLayoutParams ?: return
-	lp.setMargins(
-		left ?: lp.leftMargin,
-		top ?: lp.topMargin,
-		right ?: lp.rightMargin,
-		bottom ?: lp.rightMargin
-	)
-	layoutParams = lp
-}
 
 fun Float.subfraction(
 	@FloatRange(from = 0.0, to = 1.0) newFractionFrom: Float,
@@ -67,3 +81,5 @@ fun View.requestSize(onGotViewSize: (Int, Int) -> Unit) {
 		}
 	})
 }
+
+fun Int.toDp(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()

@@ -2,6 +2,7 @@ package com.whitipet.test.likylist.data
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import com.whitipet.test.likylist.data.database.Room
 import com.whitipet.test.likylist.data.entity.Medicine
 import com.whitipet.test.likylist.data.network.PageResults
@@ -19,7 +20,7 @@ object MedicineRepository {
 		this.context = context
 	}
 
-	fun requestMedicines() {
+	fun requestMedicines(responseData: ResponseData<List<Medicine?>>? = null) {
 		Retrofit.medicineRetrofitService.getMedicines().enqueue(object : Callback<PageResults<RetrofitMedicine>> {
 			override fun onResponse(
 				call: Call<PageResults<RetrofitMedicine>>?,
@@ -29,15 +30,16 @@ object MedicineRepository {
 					mapRetrofitMedicineToMedicine(it)
 				}
 				Room.getInstance(context).medicineDao().insert(medicines)
+				responseData?.onSuccess(medicines)
 			}
 
 			override fun onFailure(call: Call<PageResults<RetrofitMedicine>>?, t: Throwable?) {
-				// TODO
+				responseData?.onError(t)
 			}
 		})
 	}
 
-	fun requestMedicines(searchQuery: String, responseData: ResponseData<List<Medicine?>>) {
+	fun requestMedicines(searchQuery: String, responseData: ResponseData<List<Medicine?>>? = null) {
 		Retrofit.medicineRetrofitService.getMedicines(searchQuery)
 			.enqueue(object : Callback<PageResults<RetrofitMedicine>> {
 				override fun onResponse(
@@ -47,11 +49,11 @@ object MedicineRepository {
 					val medicines: List<Medicine?> = (response?.body()?.results ?: emptyList()).map {
 						mapRetrofitMedicineToMedicine(it)
 					}
-					responseData.onResponse(medicines)
+					responseData?.onSuccess(medicines)
 				}
 
 				override fun onFailure(call: Call<PageResults<RetrofitMedicine>>?, t: Throwable?) {
-					// TODO
+					responseData?.onError(t)
 				}
 			})
 	}
@@ -68,10 +70,11 @@ object MedicineRepository {
 		})
 	}
 
-	fun getMedicinesObservable(): LiveData<List<Medicine>> = Room.getInstance(context).medicineDao().getAll()
+	fun getMedicinesObservable(): LiveData<List<Medicine>> =
+		Transformations.distinctUntilChanged(Room.getInstance(context).medicineDao().getAll())
 
 	fun getMedicineObservable(medicineId: Int): LiveData<Medicine> =
-		Room.getInstance(context).medicineDao().getById(medicineId)
+		Transformations.distinctUntilChanged(Room.getInstance(context).medicineDao().getById(medicineId))
 
 	private fun mapRetrofitMedicineToMedicine(retrofitMedicine: RetrofitMedicine?): Medicine? {
 		if (retrofitMedicine != null) {
