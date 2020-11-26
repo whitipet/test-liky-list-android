@@ -15,6 +15,7 @@ class MedicinesListAdapter(private val onClick: (Int, View) -> Unit) :
 
 	class ViewHolder(itemView: View, val onClick: (Int, View) -> Unit) : RecyclerView.ViewHolder(itemView) {
 
+		private val viewPlaceholder: View = itemView.findViewById(R.id.view_medicine_placeholder)
 		private val tvTradeLabel: TextView = itemView.findViewById(R.id.tv_medicine_trade_label)
 		private val tvManufacturerName: TextView = itemView.findViewById(R.id.tv_medicine_manufacturer_name)
 
@@ -31,6 +32,7 @@ class MedicinesListAdapter(private val onClick: (Int, View) -> Unit) :
 		fun bind(medicine: Medicine) {
 			currentItem = medicine
 
+			viewPlaceholder.setBackgroundColor(medicine.color)
 			tvTradeLabel.text = medicine.tradeLabel
 			tvManufacturerName.text = medicine.manufacturerName
 		}

@@ -38,6 +38,11 @@ kapt {
 	useBuildCache = true
 }
 
+android.defaultConfig.javaCompileOptions.annotationProcessorOptions.arguments = [
+		"room.incremental"     : "true",
+		"room.expandProjection": "false"
+]
+
 dependencies {
 	implementation lib.androidx.activityKtx
 	implementation lib.androidx.appCompat
