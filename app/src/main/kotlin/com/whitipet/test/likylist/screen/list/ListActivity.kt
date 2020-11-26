@@ -38,7 +38,7 @@ class ListActivity : BaseActivityViewModel<ListViewModel>() {
 		val insetsRV: Insets = rv.obtainInsets()
 		val offsetsBtnSearch: Offsets = btnSearch.obtainOffsets()
 		ViewCompat.setOnApplyWindowInsetsListener(contentRootView) { _: View?, windowInsets: WindowInsetsCompat? ->
-			val insets: Insets = windowInsets?.stableInsets ?: Insets.NONE
+			val insets: Insets = windowInsets?.systemWindowInsets ?: Insets.NONE
 			srl.setProgressOffset(insets.top)
 			rv.setPadding(insetsRV.add(insets))
 			btnSearch.setMargins(offsetsBtnSearch.add(insets))
@@ -59,6 +59,6 @@ class ListActivity : BaseActivityViewModel<ListViewModel>() {
 		rv.adapter = medicinesListAdapter
 		viewModel.medicinesObservable.observe(this, { medicinesListAdapter.submitList(it) })
 
-		btnSearch.setOnClickListener({ SearchActivity.open(this) })
+		btnSearch.setOnClickListener { SearchActivity.open(this) }
 	}
 }

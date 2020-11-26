@@ -76,7 +76,7 @@ class MedicineActivity : BaseActivityViewModelFactory<MedicineViewModel, Medicin
 		val insetsToolbar: Insets = toolbar.obtainInsets()
 		val insetsNSV: Insets = nsv.obtainInsets()
 		ViewCompat.setOnApplyWindowInsetsListener(contentRootView) { _: View?, windowInsets: WindowInsetsCompat? ->
-			val insets: Insets = windowInsets?.stableInsets ?: Insets.NONE
+			val insets: Insets = windowInsets?.systemWindowInsets ?: Insets.NONE
 			toolbar.setPadding(insetsToolbar.add(insets.removeBottom()))
 			nsv.setPadding(insetsNSV.add(insets.removeTop()))
 			toolbar.requestSize { _, height -> ctl.minimumHeight = height }
