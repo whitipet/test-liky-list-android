@@ -2,6 +2,7 @@ package com.whitipet.test.likylist.widget
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import androidx.annotation.Px
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.color.MaterialColors
@@ -32,5 +33,13 @@ class SwipeRefreshLayout : SwipeRefreshLayout {
 	fun setProgressOffset(@Px pixelOffset: Int) {
 		val offset = pixelOffset + paddingTop
 		setProgressViewOffset(true, offset, offset + 48.toDp())
+	}
+
+	override fun onStartNestedScroll(child: View, target: View, nestedScrollAxes: Int): Boolean {
+		return child.canScrollVertically(-1) && super.onStartNestedScroll(child, target, nestedScrollAxes)
+	}
+
+	override fun onStartNestedScroll(child: View, target: View, axes: Int, type: Int): Boolean {
+		return child.canScrollVertically(-1) && super.onStartNestedScroll(child, target, axes, type)
 	}
 }
