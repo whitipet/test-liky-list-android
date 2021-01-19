@@ -87,7 +87,7 @@ class MedicineActivity : BaseActivityViewModelFactory<MedicineViewModel, Medicin
 		//region Toolbar
 		abl.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
 			val fraction = 1 - (abs(verticalOffset.toFloat() / appBarLayout.totalScrollRange).coerceIn(0.0f, 1.0f))
-			val fractionAlpha: Float = fraction.subfraction(0.2f, 0.8f)
+			val fractionAlpha: Float = fraction.subFraction(0.2f, 0.8f)
 			ivImage.alpha = fractionAlpha
 		})
 		//endregion Toolbar
