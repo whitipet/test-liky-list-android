@@ -8,24 +8,17 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.elevation.ElevationOverlayProvider
 import com.whitipet.test.likylist.R
+import com.whitipet.test.likylist.utils.getThemeColor
 import com.whitipet.test.likylist.utils.toDp
 
-class SwipeRefreshLayout : SwipeRefreshLayout {
+class SwipeRefreshLayout @JvmOverloads constructor(
+	context: Context,
+	attrs: AttributeSet? = null,
+) : SwipeRefreshLayout(context, attrs) {
 
-	constructor(context: Context) : super(context) {
-		init()
-	}
-
-	constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-		init()
-	}
-
-	private fun init() {
-		setProgressBackgroundColorSchemeColor(MaterialColors.getColor(this, R.attr.colorSurface))
-		setColorSchemeColors(
-			MaterialColors.getColor(this, R.attr.colorPrimary),
-			MaterialColors.getColor(this, R.attr.colorPrimaryVariant)
-		)
+	init {
+		setProgressBackgroundColorSchemeColor(getThemeColor(R.attr.colorSurface))
+		setColorSchemeColors(getThemeColor(R.attr.colorPrimary), getThemeColor(R.attr.colorPrimaryVariant))
 		setProgressBackgroundColorSchemeColor(
 			ElevationOverlayProvider(context).compositeOverlayWithThemeSurfaceColorIfNeeded(3f))
 	}
