@@ -6,7 +6,7 @@ import android.view.View
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import com.whitipet.test.likylist.R
-import com.whitipet.test.likylist.utils.StatusBarUtils
+import com.whitipet.test.likylist.utils.setIconsModeThemeDepending
 
 abstract class BaseActivity : AppCompatActivity() {
 
@@ -36,7 +36,7 @@ abstract class BaseActivity : AppCompatActivity() {
 					(decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR)
 			}
 		}
-		StatusBarUtils.setIconsModeThemeDepending(window)
+		window.setIconsModeThemeDepending()
 	}
 
 	@CallSuper
