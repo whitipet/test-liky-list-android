@@ -102,6 +102,10 @@ fun Float.toDp(): Float = this * Resources.getSystem().displayMetrics.density
 
 //region Color
 @ColorInt
+fun Context.getThemeColor(@AttrRes colorAttributeResId: Int): Int =
+	MaterialColors.getColor(this, colorAttributeResId, Color.MAGENTA)
+
+@ColorInt
 fun View.getThemeColor(@AttrRes colorAttributeResId: Int): Int =
 	MaterialColors.getColor(this, colorAttributeResId, Color.MAGENTA)
 //endregion Color

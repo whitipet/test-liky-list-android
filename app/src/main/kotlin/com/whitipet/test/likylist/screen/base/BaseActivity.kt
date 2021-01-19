@@ -25,7 +25,6 @@ abstract class BaseActivity : AppCompatActivity() {
 
 	protected abstract fun provideContentView(): Int
 
-
 	@CallSuper
 	protected open fun beforeOnCreateSuper() {
 		val decorView = window.decorView

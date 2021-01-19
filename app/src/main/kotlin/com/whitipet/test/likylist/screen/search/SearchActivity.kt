@@ -77,8 +77,7 @@ class SearchActivity : BaseActivityViewModel<SearchViewModel>(), CoroutineScope,
 				.setAllCornerSizes(4.0f.toDp())
 				.build()
 		)
-		materialShapeDrawable.fillColor =
-			ColorStateList.valueOf(MaterialColors.getColor(viewSearch, R.attr.colorSurface))
+		materialShapeDrawable.fillColor = ColorStateList.valueOf(getThemeColor(R.attr.colorSurface))
 		materialShapeDrawable.initializeElevationOverlay(this)
 		materialShapeDrawable.elevation = 4.0f.toDp()
 		viewSearch.background = materialShapeDrawable
