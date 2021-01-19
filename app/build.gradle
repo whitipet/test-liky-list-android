@@ -4,7 +4,7 @@ apply plugin: "kotlin-kapt"
 
 android {
 	compileSdkVersion 30
-	buildToolsVersion "30.0.2"
+	buildToolsVersion "30.0.3"
 
 	defaultConfig {
 		applicationId "com.whitipet.test.likylist"
@@ -81,10 +81,11 @@ android.defaultConfig.javaCompileOptions.annotationProcessorOptions.arguments = 
 dependencies {
 	implementation lib.androidx.activityKtx
 	implementation lib.androidx.appCompat
-
-	implementation lib.google.material
+	implementation lib.androidx.core.coreKtx
 	implementation lib.androidx.recyclerView
 	implementation lib.androidx.swipeRefreshLayout
+
+	implementation lib.google.material
 
 	implementation lib.androidx.room.runtime
 	kapt lib.androidx.room.compiler
@@ -92,5 +93,4 @@ dependencies {
 	implementation lib.square.retrofit.values()
 
 	implementation lib.kotlin.stdlib
-	implementation lib.androidx.core.coreKtx
 }
