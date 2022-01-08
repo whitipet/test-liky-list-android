@@ -12,7 +12,6 @@ import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.color.MaterialColors
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.whitipet.test.likylist.R
@@ -25,6 +24,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
+import com.google.android.material.R as RM
 
 class SearchActivity : BaseActivityViewModel<SearchViewModel>(), CoroutineScope, View.OnClickListener {
 
@@ -77,7 +77,7 @@ class SearchActivity : BaseActivityViewModel<SearchViewModel>(), CoroutineScope,
 				.setAllCornerSizes(4.0f.toDp())
 				.build()
 		)
-		materialShapeDrawable.fillColor = ColorStateList.valueOf(getThemeColor(R.attr.colorSurface))
+		materialShapeDrawable.fillColor = ColorStateList.valueOf(getThemeColor(RM.attr.colorSurface))
 		materialShapeDrawable.initializeElevationOverlay(this)
 		materialShapeDrawable.elevation = 4.0f.toDp()
 		viewSearch.background = materialShapeDrawable
