@@ -7,7 +7,7 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-		classpath "com.android.tools.build:gradle:4.1.1"
+		classpath "com.android.tools.build:gradle:7.0.4"
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$v.kotlin"
 	}
 }
@@ -21,7 +21,7 @@ subprojects {
 	configurations.all {
 		resolutionStrategy.forcedModules = libsForcedModules
 
-		exclude(group: "androidx.cardview", module: "cardview")
+		// exclude(group: "androidx.cardview", module: "cardview")
 		exclude(group: "androidx.print", module: "print")
 		exclude(group: "androidx.slidingpanelayout", module: "slidingpanelayout")
 		exclude(group: "androidx.viewpager2", module: "viewpager2")

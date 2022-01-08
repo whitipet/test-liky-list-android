@@ -17,6 +17,7 @@
 
 		<activity-alias
 			android:name=".Launcher"
+			android:exported="true"
 			android:targetActivity=".screen.list.ListActivity">
 
 			<intent-filter>
@@ -33,6 +34,7 @@
 
 		<activity
 			android:name=".screen.search.SearchActivity"
+			android:exported="false"
 			android:windowSoftInputMode="stateAlwaysVisible">
 
 			<intent-filter>
