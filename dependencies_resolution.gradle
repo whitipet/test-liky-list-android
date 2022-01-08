@@ -1,0 +1,52 @@
+ext.forceDepsBuild = [
+		dep.kotlin.values(),
+
+		dep.bundletool,
+
+		dep.jetBrainsAnnotations,
+]
+
+ext.forceDepsProjects = [
+		dep.kotlin.values(),
+
+		dep.androidx.activity.values(),
+		dep.androidx.annotation,
+		dep.androidx.appCompat,
+		dep.androidx.arch.values(),
+		dep.androidx.collection,
+		dep.androidx.constraintLayout,
+		dep.androidx.coordinatorLayout,
+		dep.androidx.core.values(),
+		dep.androidx.cursoradApter,
+		dep.androidx.customView,
+		dep.androidx.documentFile,
+		dep.androidx.fragment.values(),
+		dep.androidx.lifecycle.values(),
+		dep.androidx.loader,
+		dep.androidx.localBrManager,
+		dep.androidx.recyclerView,
+		dep.androidx.room.values(),
+		dep.androidx.savedState,
+		dep.androidx.sqlite.values(),
+		dep.androidx.swipeRefreshLayout,
+		dep.androidx.transition,
+		dep.androidx.vectorDrawable.values(),
+		dep.androidx.versionedParcelable,
+
+		dep.google.material,
+		dep.google.gson,
+
+		dep.square.okHttp,
+		dep.square.okio,
+		dep.square.retrofit.values(),
+
+		dep.jetBrainsAnnotations,
+]
+
+ext.excludeDepsProjects = { Configuration config ->
+	config.exclude(group: "androidx.cardview", module: "cardview")
+	config.exclude(group: "androidx.dynamicanimation", module: "dynamicanimation")
+	config.exclude(group: "androidx.print", module: "print")
+	config.exclude(group: "androidx.slidingpanelayout", module: "slidingpanelayout")
+	config.exclude(group: "androidx.viewpager2", module: "viewpager2")
+}

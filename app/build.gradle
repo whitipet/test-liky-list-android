@@ -1,76 +1,7 @@
-apply plugin: "com.android.application"
-apply plugin: "kotlin-android"
-apply plugin: "kotlin-kapt"
-
-android {
-	compileSdkVersion 31
-	buildToolsVersion "32.0.0"
-
-	defaultConfig {
-		applicationId "com.whitipet.test.likylist"
-		addManifestPlaceholders(appName: ".Liky List")
-
-		versionCode 1
-		versionName "1.0"
-
-		minSdkVersion 21
-		targetSdkVersion 31
-
-		resConfigs(["en"])
-	}
-
-	signingConfigs {
-		debug {
-			storeFile file(rootProject.file(".keystore/debug.jks"))
-			storePassword = "likylist"
-			keyAlias = "likylistdebugkey"
-			keyPassword = "likylist"
-		}
-	}
-
-	buildTypes {
-		debug {
-			signingConfig = signingConfigs.debug
-			debuggable = true
-			minifyEnabled = false
-			zipAlignEnabled = false
-			crunchPngs = false
-			shrinkResources = false
-		}
-
-		release {
-			signingConfig = signingConfigs.debug
-			debuggable = false
-			minifyEnabled = true
-			zipAlignEnabled = true
-			crunchPngs = true
-			shrinkResources = true
-			proguardFiles(
-					getDefaultProguardFile("proguard-android-optimize.txt"),
-					"$project.rootDir/proguard-rules.pro"
-			)
-		}
-	}
-
-	compileOptions {
-		incremental = true
-		sourceCompatibility JavaVersion.VERSION_1_8
-		targetCompatibility JavaVersion.VERSION_1_8
-	}
-
-	dexOptions.preDexLibraries = true
-	lintOptions.abortOnError = false
-
-	kotlinOptions {
-		jvmTarget = "1.8"
-	}
-	sourceSets.all {
-		java.srcDir("src/$name/kotlin")
-	}
-}
-
-kapt {
-	useBuildCache = true
+plugins {
+	id "com.android.application"
+	id "kotlin-android"
+	id "kotlin-kapt"
 }
 
 android.defaultConfig.javaCompileOptions.annotationProcessorOptions.arguments = [
@@ -79,18 +10,17 @@ android.defaultConfig.javaCompileOptions.annotationProcessorOptions.arguments = 
 ]
 
 dependencies {
-	implementation lib.androidx.activityKtx
-	implementation lib.androidx.appCompat
-	implementation lib.androidx.core.coreKtx
-	implementation lib.androidx.recyclerView
-	implementation lib.androidx.swipeRefreshLayout
+	implementation dep.androidx.activity.activity
+	implementation dep.androidx.appCompat
+	implementation dep.androidx.core.coreKtx
+	implementation dep.androidx.lifecycle.liveDataKtx
+	implementation dep.androidx.recyclerView
+	implementation dep.androidx.swipeRefreshLayout
 
-	implementation lib.google.material
+	implementation dep.google.material
 
-	implementation lib.androidx.room.runtime
-	kapt lib.androidx.room.compiler
+	implementation dep.androidx.room.runtime
+	kapt dep.androidx.room.compiler
 
-	implementation lib.square.retrofit.values()
-
-	implementation lib.kotlin.stdlib
+	implementation dep.square.retrofit.values()
 }

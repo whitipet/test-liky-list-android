@@ -1,0 +1,57 @@
+apply from: file("$mainRootDir/gradle/plugin_android.gradle")
+apply from: file("$mainRootDir/gradle/signing_config.gradle")
+
+android {
+	defaultConfig {
+		applicationId = config.applicationId
+
+		versionCode = config.versionCode
+		versionName = config.versionName
+	}
+
+	buildTypes {
+		debug {
+			signingConfig = signingConfigs.debug
+
+			shrinkResources = false
+
+			addManifestPlaceholders(appName: ".$config.appName")
+		}
+
+		release {
+			signingConfig = signingConfigs.release
+
+			shrinkResources = config.enableProguard
+
+			addManifestPlaceholders(appName: config.appName)
+		}
+	}
+}
+
+//region Output file name
+android {
+	defaultConfig {
+		archivesBaseName = provideOutputFileName(null)
+	}
+	applicationVariants.all { variant ->
+		variant.outputs.all {
+			outputFileName = "${provideOutputFileName(variant.name)}.apk"
+		}
+	}
+}
+
+@SuppressWarnings("GrMethodMayBeStatic")
+def provideOutputFileName(String buildTypeName) {
+	def appName = config.appName
+	def versionName = config.versionName
+	def versionCode = config.versionCode
+	def finalName = "${appName}_v${versionName}_vc${versionCode}"
+
+	if (buildTypeName != null && buildTypeName != "release") {
+		finalName = "${finalName}_${buildTypeName}"
+	}
+
+	finalName = finalName.replaceAll(" ", "_")
+	return finalName
+}
+//endregion Output file name

@@ -1,65 +1,127 @@
-ext.v = [
+def v = [
+		androidGradlePlugin : "7.0.4",              // https://mvnrepository.com/artifact/com.android.tools.build/gradle?repo=google                       https://developer.android.com/studio/releases/gradle-plugin
+		r8                  : "3.1.52",             // https://r8.googlesource.com/r8/+/refs/heads/3.1
+		bundletool          : "1.8.2",              // https://mvnrepository.com/artifact/com.android.tools.build/bundletool                               https://github.com/google/bundletool
+
+		kotlin              : "1.6.10",             // https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib                               https://blog.jetbrains.com/kotlin/category/releases/
+
 		androidx            : [
-				activityKtx       : "1.4.0",
-				appCompat         : "1.4.0",
-				arch              : "2.1.0",
-				core              : "1.7.0",
-				lifecycle         : "2.4.0",
-				recyclerView      : "1.2.1",
-				room              : "2.4.0",
-				sqlite            : "2.2.0",
-				swipeRefreshLayout: "1.1.0",
+				activity           : "1.4.0",       // https://mvnrepository.com/artifact/androidx.activity/activity                                       https://developer.android.com/jetpack/androidx/releases/activity
+				annotation         : "1.3.0",       // https://mvnrepository.com/artifact/androidx.annotation/annotation?repo=google                       https://developer.android.com/jetpack/androidx/releases/annotation
+				appCompat          : "1.4.0",       // https://mvnrepository.com/artifact/androidx.appcompat/appcompat?repo=google                         https://developer.android.com/jetpack/androidx/releases/appcompat
+				arch               : "2.1.0",       // https://mvnrepository.com/artifact/androidx.arch.core/core-common                                   https://developer.android.com/jetpack/androidx/releases/arch
+				collection         : "1.2.0",       // https://mvnrepository.com/artifact/androidx.collection/collection                                   https://developer.android.com/jetpack/androidx/releases/collection
+				constraintLayout   : "2.1.2",       // https://mvnrepository.com/artifact/androidx.constraintlayout/constraintlayout
+				coordinatorLayout  : "1.1.0",       // https://mvnrepository.com/artifact/androidx.coordinatorlayout/coordinatorlayout?repo=google         https://developer.android.com/jetpack/androidx/releases/coordinatorlayout
+				core               : "1.7.0",       // https://mvnrepository.com/artifact/androidx.core/core                                               https://developer.android.com/jetpack/androidx/releases/core
+				cursoradApter      : "1.0.0",       // https://mvnrepository.com/artifact/androidx.cursoradapter/cursoradapter                             https://developer.android.com/jetpack/androidx/releases/cursoradapter
+				customView         : "1.1.0",       // https://mvnrepository.com/artifact/androidx.customview/customview                                   https://developer.android.com/jetpack/androidx/releases/customview
+				documentFile       : "1.0.1",       // https://mvnrepository.com/artifact/androidx.documentfile/documentfile                               https://developer.android.com/jetpack/androidx/releases/documentfile
+				fragment           : "1.4.0",       // https://mvnrepository.com/artifact/androidx.fragment/fragment                                       https://developer.android.com/jetpack/androidx/releases/fragment
+				lifecycle          : "2.4.0",       // https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-common                              https://developer.android.com/jetpack/androidx/releases/lifecycle
+				loader             : "1.1.0",       // https://mvnrepository.com/artifact/androidx.loader/loader?repo=google                               https://developer.android.com/jetpack/androidx/releases/loader
+				localBrManager     : "1.0.0",       // https://mvnrepository.com/artifact/androidx.localbroadcastmanager/localbroadcastmanager             https://developer.android.com/jetpack/androidx/releases/localbroadcastmanager
+				recyclerView       : "1.2.1",       // https://mvnrepository.com/artifact/androidx.recyclerview/recyclerview                               https://developer.android.com/jetpack/androidx/releases/recyclerview
+				room               : "2.4.0",       // https://mvnrepository.com/artifact/androidx.room/room-runtime                                       https://developer.android.com/jetpack/androidx/releases/room
+				savedState         : "1.1.0",       // https://mvnrepository.com/artifact/androidx.savedstate/savedstate                                   https://developer.android.com/jetpack/androidx/releases/savedstate
+				sqlite             : "2.2.0",       // https://mvnrepository.com/artifact/androidx.sqlite/sqlite                                           https://developer.android.com/jetpack/androidx/releases/sqlite
+				swipeRefreshLayout : "1.1.0",       // https://mvnrepository.com/artifact/androidx.swiperefreshlayout/swiperefreshlayout                   https://developer.android.com/jetpack/androidx/releases/swiperefreshlayout
+				transition         : "1.4.1",       // https://mvnrepository.com/artifact/androidx.transition/transition?repo=google                       https://developer.android.com/jetpack/androidx/releases/transition
+				vectorDrawable     : "1.1.0",       // https://mvnrepository.com/artifact/androidx.vectordrawable/vectordrawable                           https://developer.android.com/jetpack/androidx/releases/vectordrawable
+				versionedParcelable: "1.1.1",       // https://mvnrepository.com/artifact/androidx.versionedparcelable/versionedparcelable                 https://developer.android.com/jetpack/androidx/releases/versionedparcelable
 		],
 
 		google              : [
-				material: "1.4.0",
+				material: "1.4.0",                  // https://mvnrepository.com/artifact/com.google.android.material/material                             https://github.com/material-components/material-components-android/releases
 				gson    : "2.8.9",
 		],
 
 		square              : [
-				okHttp  : "4.9.3",
-				okio    : "3.0.0",
-				retrofit: "2.9.0",
-
+				okHttp  : "4.9.3",                  // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp                                      https://github.com/square/okhttp
+				okio    : "3.0.0",                  // https://mvnrepository.com/artifact/com.squareup.okio/okio                                           https://github.com/square/okio
+				retrofit: "2.9.0",                  // https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit                                  https://github.com/square/retrofit
 		],
 
-		kotlin              : "1.6.10",
-		jetBrainsAnnotations: "23.0.0",
+		jetBrainsAnnotations: "23.0.0",             // https://mvnrepository.com/artifact/org.jetbrains/annotations
 ]
 
-ext.lib = [
+ext.dep = [
+		androidGradlePlugin : "com.android.tools.build:gradle:$v.androidGradlePlugin",
+		r8                  : "com.android.tools:r8:$v.r8",
+		kotlinPlugin        : "org.jetbrains.kotlin:kotlin-gradle-plugin:$v.kotlin",
+		bundletool          : "com.android.tools.build:bundletool:$v.bundletool",
+
+		kotlin              : [
+				extensionsRuntime: "org.jetbrains.kotlin:kotlin-android-extensions-runtime:$v.kotlin",
+				stdlib           : "org.jetbrains.kotlin:kotlin-stdlib:$v.kotlin",
+				stdlibCommon     : "org.jetbrains.kotlin:kotlin-stdlib-common:$v.kotlin",
+				stdlibJdk7       : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$v.kotlin",
+				stdlibJdk8       : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$v.kotlin",
+		],
+
 		androidx            : [
-				activityKtx       : "androidx.activity:activity-ktx:$v.androidx.activityKtx",
-				appCompat         : "androidx.appcompat:appcompat:$v.androidx.appCompat",
-				arch              : [
+				activity           : [
+						activity   : "androidx.activity:activity:$v.androidx.activity",
+						activityKtx: "androidx.activity:activity-ktx:$v.androidx.activity",
+				],
+				annotation         : "androidx.annotation:annotation:$v.androidx.annotation",
+				appCompat          : "androidx.appcompat:appcompat:$v.androidx.appCompat",
+				arch               : [
 						coreCommon : "androidx.arch.core:core-runtime:$v.androidx.arch",
 						coreRuntime: "androidx.arch.core:core-common:$v.androidx.arch",
 						coreTesting: "androidx.arch.core:core-testing:$v.androidx.arch",
 				],
-				core              : [
+				collection         : "androidx.collection:collection:$v.androidx.collection",
+				constraintLayout   : "androidx.constraintlayout:constraintlayout:$v.androidx.constraintLayout",
+				coordinatorLayout  : "androidx.coordinatorlayout:coordinatorlayout:$v.androidx.coordinatorLayout",
+				core               : [
 						core   : "androidx.core:core:$v.androidx.core",
 						coreKtx: "androidx.core:core-ktx:$v.androidx.core",
 				],
-				lifecycle         : [
+				cursoradApter      : "androidx.cursoradapter:cursoradapter:$v.androidx.cursoradApter",
+				customView         : "androidx.customview:customview:$v.androidx.customView",
+				documentFile       : "androidx.documentfile:documentfile:$v.androidx.documentFile",
+				fragment           : [
+						fragment   : "androidx.fragment:fragment:$v.androidx.fragment",
+						fragmentKtx: "androidx.fragment:fragment-ktx:$v.androidx.fragment",
+				],
+				lifecycle          : [
 						common             : "androidx.lifecycle:lifecycle-common:$v.androidx.lifecycle",
+						commonJava8        : "androidx.lifecycle:lifecycle-common-java8:$v.androidx.lifecycle",
+						extensions         : "androidx.lifecycle:lifecycle-extensions:$v.androidx.lifecycle",
 						liveData           : "androidx.lifecycle:lifecycle-livedata:$v.androidx.lifecycle",
-						liveDataCoreKtx    : "androidx.lifecycle:lifecycle-livedata-core:$v.androidx.lifecycle",
+						liveDataKtx        : "androidx.lifecycle:lifecycle-livedata-ktx:$v.androidx.lifecycle",
+						liveDataCore       : "androidx.lifecycle:lifecycle-livedata-core:$v.androidx.lifecycle",
+						liveDataCoreKtx    : "androidx.lifecycle:lifecycle-livedata-core-ktx:$v.androidx.lifecycle",
+						process            : "androidx.lifecycle:lifecycle-process:$v.androidx.lifecycle",
 						runtime            : "androidx.lifecycle:lifecycle-runtime:$v.androidx.lifecycle",
 						runtimeKtx         : "androidx.lifecycle:lifecycle-runtime-ktx:$v.androidx.lifecycle",
+						service            : "androidx.lifecycle:lifecycle-service:$v.androidx.lifecycle",
 						viewModel          : "androidx.lifecycle:lifecycle-viewmodel:$v.androidx.lifecycle",
 						viewModelKtx       : "androidx.lifecycle:lifecycle-viewmodel-ktx:$v.androidx.lifecycle",
 						viewModelSavedState: "androidx.lifecycle:lifecycle-viewmodel-savedstate:$v.androidx.lifecycle",
+
 				],
-				recyclerView      : "androidx.recyclerview:recyclerview:$v.androidx.recyclerView",
-				room              : [
+				loader             : "androidx.loader:loader:$v.androidx.loader",
+				localBrManager     : "androidx.localbroadcastmanager:localbroadcastmanager:$v.androidx.localBrManager",
+				recyclerView       : "androidx.recyclerview:recyclerview:$v.androidx.recyclerView",
+				room               : [
 						runtime : "androidx.room:room-runtime:$v.androidx.room",
-						compiler: "androidx.room:room-compiler:$v.androidx.room",
+						compiler: "androidx.room:room-compiler:$v.androidx.room",   // annotationProcessor
 				],
-				sqlite            : [
+				savedState         : "androidx.savedstate:savedstate:$v.androidx.savedState",
+				sqlite             : [
 						sqlite         : "androidx.sqlite:sqlite:$v.androidx.sqlite",
 						sqliteFramework: "androidx.sqlite:sqlite-framework:$v.androidx.sqlite",
 				],
-				swipeRefreshLayout: "androidx.swiperefreshlayout:swiperefreshlayout:$v.androidx.swipeRefreshLayout",
+				swipeRefreshLayout : "androidx.swiperefreshlayout:swiperefreshlayout:$v.androidx.swipeRefreshLayout",
+				transition         : "androidx.transition:transition:$v.androidx.transition",
+				vectorDrawable     : [
+						core    : "androidx.vectordrawable:vectordrawable:$v.androidx.vectorDrawable",
+						animated: "androidx.vectordrawable:vectordrawable-animated:$v.androidx.vectorDrawable",
+						seekable: "androidx.vectordrawable:vectordrawable-seekable:$v.androidx.vectorDrawable",
+				],
+				versionedParcelable: "androidx.versionedparcelable:versionedparcelable:$v.androidx.versionedParcelable",
 		],
 
 		google              : [
@@ -76,8 +138,5 @@ ext.lib = [
 				okio    : "com.squareup.okio:okio:$v.square.okio",
 		],
 
-		kotlin              : [
-				stdlib: "org.jetbrains.kotlin:kotlin-stdlib:$v.kotlin",
-		],
 		jetBrainsAnnotations: "org.jetbrains:annotations:$v.jetBrainsAnnotations",
 ]

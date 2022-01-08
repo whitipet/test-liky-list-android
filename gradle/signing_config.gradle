@@ -1,0 +1,51 @@
+android.signingConfigs {
+	debug {
+		Properties keyProperties = getDebugKeyProperties()
+
+		storeFile file(keyProperties.get("storeFile"))
+		storePassword = keyProperties.get("storePassword")
+		keyAlias = keyProperties.get("keyAlias")
+		keyPassword = keyProperties.get("keyPassword")
+	}
+	release {
+		Properties keyProperties = getReleaseKeyProperties()
+
+		storeFile file(keyProperties.get("storeFile"))
+		storePassword = keyProperties.get("storePassword")
+		keyAlias = keyProperties.get("keyAlias")
+		keyPassword = keyProperties.get("keyPassword")
+	}
+}
+
+@SuppressWarnings("GrMethodMayBeStatic")
+String getKeystoreDir() { return "$mainRootDir/.keystore/" }
+
+def getDebugKeyProperties() {
+	String keystoreDir = getKeystoreDir()
+	Properties keyProperties = getKeyProperties(keystoreDir, "debug.properties")
+	keyProperties.replace("storeFile", keystoreDir + keyProperties.getProperty("storeFile"))
+	return keyProperties
+}
+
+def getReleaseKeyProperties() {
+	String keystoreDir = getKeystoreDir()
+	Properties keyProperties = getKeyProperties(keystoreDir, "release.properties")
+	if (keyProperties == null) {
+		keyProperties = getDebugKeyProperties()
+		// logger.error("Can\'t find release key, debug key will be used")
+	} else {
+		keyProperties.replace("storeFile", keystoreDir + keyProperties.getProperty("storeFile"))
+	}
+	return keyProperties
+}
+
+def getKeyProperties(String keyDir, String keyPropertiesName) {
+	Properties keyProperties = new Properties()
+	File keyPropertiesFile = file(keyDir + keyPropertiesName)
+	if (keyPropertiesFile.isFile() && keyPropertiesFile.canRead()) {
+		keyProperties.load(new FileInputStream(keyPropertiesFile))
+		return keyProperties
+	} else {
+		return null
+	}
+}

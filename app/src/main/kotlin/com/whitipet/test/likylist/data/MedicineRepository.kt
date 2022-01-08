@@ -1,5 +1,6 @@
 package com.whitipet.test.likylist.data
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
@@ -12,6 +13,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+@SuppressLint("StaticFieldLeak")
 object MedicineRepository {
 
 	private lateinit var context: Context

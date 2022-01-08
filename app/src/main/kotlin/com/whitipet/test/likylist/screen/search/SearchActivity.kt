@@ -19,20 +19,13 @@ import com.whitipet.test.likylist.screen.base.BaseActivityViewModel
 import com.whitipet.test.likylist.screen.list.MedicinesListAdapter
 import com.whitipet.test.likylist.screen.medicine.MedicineActivity
 import com.whitipet.test.likylist.utils.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
 import com.google.android.material.R as RM
 
-class SearchActivity : BaseActivityViewModel<SearchViewModel>(), CoroutineScope, View.OnClickListener {
+class SearchActivity : BaseActivityViewModel<SearchViewModel>(), View.OnClickListener {
 
 	companion object {
 		fun open(context: Context) = context.startActivity(Intent(context, SearchActivity::class.java))
 	}
-
-	override val coroutineContext: CoroutineContext = Dispatchers.Main
 
 	override fun provideViewModel(): Class<SearchViewModel> = SearchViewModel::class.java
 
@@ -102,17 +95,15 @@ class SearchActivity : BaseActivityViewModel<SearchViewModel>(), CoroutineScope,
 
 	private val watcher = object : TextWatcher {
 		private var searchQuery = ""
+		private val searchDebounceRunnable: Runnable by lazy { Runnable { viewModel.search(searchQuery) } }
 
 		override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 			val text = s.toString().trim()
 			if (text == searchQuery) return
 			searchQuery = text
-			launch {
-				delay(300)
-				if (text != searchQuery) return@launch
 
-				viewModel.search(searchQuery)
-			}
+			etSearch.handler.removeCallbacks(searchDebounceRunnable)
+			etSearch.handler.postDelayed(searchDebounceRunnable, 300)
 		}
 
 		override fun afterTextChanged(s: Editable?) {
