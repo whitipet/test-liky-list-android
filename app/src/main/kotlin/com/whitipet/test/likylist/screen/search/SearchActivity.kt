@@ -102,8 +102,10 @@ class SearchActivity : BaseActivityViewModel<SearchViewModel>(), View.OnClickLis
 			if (text == searchQuery) return
 			searchQuery = text
 
-			etSearch.handler.removeCallbacks(searchDebounceRunnable)
-			etSearch.handler.postDelayed(searchDebounceRunnable, 300)
+			searchDebounceRunnable.let {
+				etSearch.removeCallbacks(searchDebounceRunnable)
+				etSearch.postDelayed(searchDebounceRunnable, 300)
+			}
 		}
 
 		override fun afterTextChanged(s: Editable?) {
