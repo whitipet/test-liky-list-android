@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<declare-styleable name="Theme">
-		<attr name="colorOnGeneral" format="color"/>
-		<attr name="colorOnGeneralVariant" format="color"/>
-
-		<attr name="colorBackground" format="color"/>
-	</declare-styleable>
-
 	<declare-styleable name="MedicineElement">
 		<attr name="android:src" format="reference"/>
 		<attr name="android:title" format="string"/>

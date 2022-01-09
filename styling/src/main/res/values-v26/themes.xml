@@ -2,6 +2,6 @@
 <resources>
 	<style name="Platform.Theme.LikyList" parent="Platform.V26.Theme.LikyList"/>
 	<style name="Platform.V26.Theme.LikyList" parent="Platform.V23.Theme.LikyList">
-		<item name="android:navigationBarColor">@color/nav_bar</item>
+		<item name="android:navigationBarColor">?colorNavigationBar</item>
 	</style>
 </resources>

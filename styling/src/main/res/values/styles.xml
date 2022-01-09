@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+	<style name="Widget.TextView" parent="Widget.MaterialComponents.TextView">
+		<item name="android:includeFontPadding">false</item>
+		<item name="android:fontFamily">sans-serif</item>
+		<item name="android:hyphenationFrequency" tools:ignore="NewApi">none</item>
+		<item name="android:breakStrategy" tools:ignore="NewApi">simple</item>
+	</style>
+
+	<style name="Widget.EditText" parent="Widget.AppCompat.EditText">
+		<item name="android:includeFontPadding">false</item>
+		<item name="android:textCursorDrawable">@drawable/cursor_edit_text</item>
+		<item name="android:hyphenationFrequency" tools:ignore="NewApi">none</item>
+		<item name="android:breakStrategy" tools:ignore="NewApi">simple</item>
+	</style>
+
+	<style name="Widget.Divider" parent="">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">1dp</item>
+		<item name="android:background">#000</item>
+	</style>
+
+	<style name="Widget.Divider.OnBackground" parent="Widget.Divider">
+		<item name="android:background">?colorOnBackground</item>
+		<item name="android:alpha">@dimen/alpha_divider</item>
+	</style>
+</resources>

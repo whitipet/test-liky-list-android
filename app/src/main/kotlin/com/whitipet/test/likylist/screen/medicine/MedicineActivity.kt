@@ -49,7 +49,7 @@ class MedicineActivity : BaseActivityViewModelFactory<MedicineViewModel, Medicin
 		val transform = MaterialContainerTransform()
 		transform.addTarget(contentRootView)
 		transform.duration = 300
-		val colorBg: Int = MaterialColors.getColor(contentRootView, R.attr.colorBackground)
+		val colorBg: Int = MaterialColors.getColor(contentRootView, styling.R.attr.colorBackground)
 		transform.setAllContainerColors(colorBg)
 		window.sharedElementEnterTransition = transform
 		window.sharedElementReturnTransition = transform

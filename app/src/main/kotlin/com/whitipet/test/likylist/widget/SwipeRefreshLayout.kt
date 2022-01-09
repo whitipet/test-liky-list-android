@@ -17,7 +17,7 @@ class SwipeRefreshLayout @JvmOverloads constructor(
 
 	init {
 		setProgressBackgroundColorSchemeColor(getThemeColor(RM.attr.colorSurface))
-		setColorSchemeColors(getThemeColor(android.R.attr.colorPrimary), getThemeColor(RM.attr.colorPrimaryVariant))
+		setColorSchemeColors(getThemeColor(RM.attr.colorPrimary))
 		setProgressBackgroundColorSchemeColor(
 			ElevationOverlayProvider(context).compositeOverlayWithThemeSurfaceColorIfNeeded(3f))
 	}

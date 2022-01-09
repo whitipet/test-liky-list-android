@@ -10,14 +10,14 @@ android.defaultConfig.javaCompileOptions.annotationProcessorOptions.arguments = 
 ]
 
 dependencies {
+	implementation project(":styling")
+
 	implementation dep.androidx.activity.activity
 	implementation dep.androidx.appCompat
 	implementation dep.androidx.core.coreKtx
 	implementation dep.androidx.lifecycle.liveDataKtx
 	implementation dep.androidx.recyclerView
 	implementation dep.androidx.swipeRefreshLayout
-
-	implementation dep.google.material
 
 	implementation dep.androidx.room.runtime
 	kapt dep.androidx.room.compiler

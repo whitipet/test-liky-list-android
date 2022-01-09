@@ -1,3 +1,5 @@
 rootProject.name = "Liky List"
 
-include ":app"
+include(":app")
+
+include(":styling")

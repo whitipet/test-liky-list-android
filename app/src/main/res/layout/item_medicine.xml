@@ -32,7 +32,7 @@
 			android:ellipsize="end"
 			android:maxLines="1"
 			android:textAppearance="?textAppearanceBody1"
-			android:textColor="?colorOnGeneral"
+			android:textColor="?colorOnBackground"
 			tools:text="@tools:sample/lorem/random"/>
 
 		<TextView
@@ -43,7 +43,7 @@
 			android:ellipsize="end"
 			android:maxLines="1"
 			android:textAppearance="?textAppearanceBody2"
-			android:textColor="?colorOnGeneralVariant"
+			android:textColor="?colorOnBackground"
 			android:textSize="12sp"
 			tools:text="@tools:sample/lorem/random"/>
 	</LinearLayout>

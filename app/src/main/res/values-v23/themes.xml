@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-	<style name="Platform.Theme.LikyList" parent="Platform.V23.Theme.LikyList"/>
-	<style name="Platform.V23.Theme.LikyList" parent="Platform.V21.Theme.LikyList">
-		<item name="android:statusBarColor">@color/status_bar</item>
-		<item name="android:windowLightStatusBar">@bool/is_light_theme</item>
-	</style>
-</resources>

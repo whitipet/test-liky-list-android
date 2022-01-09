@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="Base.Theme.LikyList.Colors" parent="Base.Theme.LikyList">
+		<item name="colorTransparent">@color/white_0</item>
+
+		<!--region System bars-->
+		<item name="colorStatusBar">@color/white_40</item>
+		<item name="isLightStatusBar">true</item>
+
+		<item name="colorNavigationBar">@color/white_90</item>
+		<item name="isLightNavigationBar">true</item>
+		<!--endregion System bars-->
+	</style>
+</resources>
